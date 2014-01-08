@@ -36,11 +36,11 @@ if ([factory createObjectFromJSON:[@"the geojson string" dataUsingEncoding:NSUTF
 
 ## Dependency
 
-This fork has dependency on CoreLocation.
+This fork has dependency on CoreLocation. The code should work on iOS >= 5.0
 
 ## ARC
 
-YOURS is ARC only and works on iOS >= 5.0
+YOURS is ARC only and compiles on iOS SDK >= 7.0
 
 
 ## TODO (feel free to pull)

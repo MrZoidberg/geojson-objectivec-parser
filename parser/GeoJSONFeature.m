@@ -20,11 +20,11 @@
 - (id) initWithGeoJSONFeature:(NSDictionary*)feat
 {
     if (self = [super init]) {
-        _featureId = [[feat objectForKey:@"id"] copy];  // optional
+        _featureId = [feat[@"id"] copy];  // optional
         
-        NSDictionary *prop = [feat objectForKey:@"properties"];
+        NSDictionary *prop = feat[@"properties"];
         _properties = prop != nil ? [[NSDictionary alloc] initWithDictionary:prop copyItems:YES] : nil;
-        id geomId = [feat objectForKey:@"geometry"];
+        id geomId = feat[@"geometry"];
         
         if (!geomId || !_properties) {
             self = nil;

@@ -33,7 +33,7 @@
 
 - (GeoJSONPolygon*) polygonAt:(int)index
 {
-    return index < _polygons.count ? [_polygons objectAtIndex:index] : nil;
+    return index < _polygons.count ? _polygons[index] : nil;
 }
 
 - (int) count

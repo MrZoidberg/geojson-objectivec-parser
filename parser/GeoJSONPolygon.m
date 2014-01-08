@@ -17,13 +17,13 @@
 {
     if (self = [super init]) {
         
-        _points = [[GeoJSONMultiPoint alloc] initWithGeoJSONCoordinates:[coords objectAtIndex:0]];
+        _points = [[GeoJSONMultiPoint alloc] initWithGeoJSONCoordinates:coords[0]];
         
         NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:coords.count];
         if (coords.count > 1) {
             // holes
             for (int i = 1; i < coords.count; ++i) {
-                GeoJSONMultiPoint *hole = [[GeoJSONMultiPoint alloc] initWithGeoJSONCoordinates:[coords objectAtIndex:i]];
+                GeoJSONMultiPoint *hole = [[GeoJSONMultiPoint alloc] initWithGeoJSONCoordinates:coords[i]];
                 if (hole) {
                     [tmp addObject:hole];
                 }
@@ -44,7 +44,7 @@
 
 - (GeoJSONMultiPoint*) holeAt:(int)index
 {
-    return index < _holes.count ? [_holes objectAtIndex:index] : nil;
+    return index < _holes.count ? _holes[index] : nil;
 }
 
 - (int) vertexCount

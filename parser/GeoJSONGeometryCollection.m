@@ -15,7 +15,7 @@
 - (id) initWithGeoJSONGeometryCollection:(NSDictionary*)collection
 {
     if (self = [super init]) {
-        NSArray *geometries = [collection objectForKey:@"geometries"];
+        NSArray *geometries = collection[@"geometries"];
         
         if (geometries != nil) {
             NSMutableArray *tmpObjects = [[NSMutableArray alloc] initWithCapacity:geometries.count];
@@ -42,12 +42,12 @@
 
 - (id) geometryAt:(int)index
 {
-    return index < _geometries.count ? [_geometries objectAtIndex:index] : nil;
+    return index < _geometries.count ? _geometries[index] : nil;
 }
 
 - (GeoJSONObjectType) typeAt:(int)index
 {
-    return index < _types.count ? (GeoJSONObjectType)[[_types objectAtIndex:index] intValue] : GeoJSONType_Undefined;
+    return index < _types.count ? (GeoJSONObjectType)[_types[index] intValue] : GeoJSONType_Undefined;
 }
 
 - (int) count

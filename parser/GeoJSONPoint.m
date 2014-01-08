@@ -19,9 +19,9 @@
     if (self = [super init]) {
         int c = coord.count;
         if (c >= 2) {
-            _longitude = [[coord objectAtIndex:0] doubleValue];
-            _latitude = [[coord objectAtIndex:1] doubleValue];
-            _altitude = (c >= 3) ? [[coord objectAtIndex:2] doubleValue] : -1;
+            _longitude = [coord[0] doubleValue];
+            _latitude = [coord[1] doubleValue];
+            _altitude = (c >= 3) ? [coord[2] doubleValue] : -1;
         } else {
             self = nil;
         }

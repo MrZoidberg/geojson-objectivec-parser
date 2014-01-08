@@ -104,12 +104,12 @@ NSString* NSStringFromGeoJSONType(GeoJSONObjectType type)
         return NO;
     }
     
-    NSString *objType = [geojson objectForKey:@"type"];
+    NSString *objType = geojson[@"type"];
 
     _type = GeoJSONTypeFromString(objType);
     _object = nil;
 
-    NSArray* coord = [geojson objectForKey:@"coordinates"];
+    NSArray* coord = geojson[@"coordinates"];
     switch (_type) {
         case GeoJSONType_GeometryPoint:
             _object = [[GeoJSONPoint alloc] initWithGeoJSONCoordinates:coord];

@@ -33,7 +33,7 @@
 
 - (GeoJSONPoint*) pointAt:(int)index
 {
-    return index < _points.count ? [_points objectAtIndex:index] : nil;
+    return index < _points.count ? _points[index] : nil;
 }
 
 - (int) count

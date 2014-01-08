@@ -15,7 +15,7 @@
 - (id) initWithGeoJSONFeatureCollection:(NSDictionary*)collection
 {
     if (self = [super init]) {
-        NSArray *features = [collection objectForKey:@"features"];
+        NSArray *features = collection[@"features"];
         
         if (features != nil) {
             NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:features.count];
@@ -38,7 +38,7 @@
 
 - (GeoJSONFeature*) featureAt:(int)index
 {
-    return index < _features.count ? [_features objectAtIndex:index] : nil;
+    return index < _features.count ? _features[index] : nil;
 }
 
 - (int) count
