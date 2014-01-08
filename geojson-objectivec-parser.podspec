@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/MrZoidberg/geojson-objectivec-parser"
-  s.authors = { 'jmnavarro' => 'https://github.com/MrZoidberg/geojson-objectivec-parser',
+  s.authors = { 'jmnavarro' => 'https://github.com/jmnavarro',
                  "Mikhail Merkulov" => "Mihail.Merkulov@gmail.com"}
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.8'
