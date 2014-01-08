@@ -1,6 +1,6 @@
 //
 //  GeoJSON.h
-//  ParkovkiUA
+//  geojson-objectivec-parser
 //
 //  Created by Mikhail Merkulov on 30.10.13.
 //  Copyright (c) 2013 ZoidSoft. All rights reserved.
