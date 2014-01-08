@@ -1,3 +1,0 @@
-[submodule "parser/json-framework"]
-	path = parser/json-framework
-	url = git://github.com/stig/json-framework.git
