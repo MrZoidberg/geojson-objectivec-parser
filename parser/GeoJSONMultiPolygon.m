@@ -22,12 +22,10 @@
             GeoJSONPolygon *geoPoly = [[GeoJSONPolygon alloc] initWithGeoJSONCoordinates:Polygon];
             if (geoPoly) {
                 [tmp addObject:geoPoly];
-                [geoPoly release];
             }
         }
 
         _polygons = [[NSArray alloc] initWithArray:tmp];
-        [tmp release];
     }
     return self;
 }
@@ -59,13 +57,6 @@
     }
     [str appendFormat:@"\n]"];
     return [NSString stringWithString:str];
-}
-
-
-- (void) dealloc
-{
-    [_polygons release];
-    [super dealloc];
 }
 
 @end

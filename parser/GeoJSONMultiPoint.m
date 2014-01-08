@@ -22,12 +22,10 @@
             GeoJSONPoint *geoPoint = [[GeoJSONPoint alloc] initWithGeoJSONCoordinates:point];
             if (geoPoint) {
                 [tmp addObject:geoPoint];
-                [geoPoint release];
             }
         }
         
         _points = [[NSArray alloc] initWithArray:tmp];
-        [tmp release];
     }
     return self;
 }
@@ -60,13 +58,6 @@
     }
     [str appendFormat:@"\n]"];
     return [NSString stringWithString:str];
-}
-
-
-- (void) dealloc
-{
-    [_points release];
-    [super dealloc];
 }
 
 @end

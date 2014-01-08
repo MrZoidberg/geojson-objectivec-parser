@@ -26,15 +26,12 @@
                 GeoJSONMultiPoint *hole = [[GeoJSONMultiPoint alloc] initWithGeoJSONCoordinates:[coords objectAtIndex:i]];
                 if (hole) {
                     [tmp addObject:hole];
-                    [hole release];
                 }
             }
             _holes = [[NSArray alloc] initWithArray:tmp];
         } else {
             _holes = [[NSArray alloc] init];
         }
-        
-        [tmp release];
     }
     return self;
 }
@@ -60,12 +57,10 @@
     return _holes ? _holes.count : -1;
 }
 
-
 + (bool) isType:(NSString*)type
 {
     return [@"MultiLineString" isEqualToString:type] || [@"Polygon" isEqualToString:type];
 }
-
 
 - (NSString*) description
 {
@@ -78,14 +73,6 @@
     [str appendFormat:@"\n]"];
     //TODO holes
     return [NSString stringWithString:str];
-}
-
-
-- (void) dealloc
-{
-    [_points release];
-    [_holes release];
-    [super dealloc];
 }
 
 @end

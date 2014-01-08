@@ -11,10 +11,10 @@
 
 @interface GeoJSONFeature : NSObject
 
-@property (nonatomic, readonly) NSString* featureId;
+@property (nonatomic, readonly, strong) NSString* featureId;
 @property (nonatomic, readonly) GeoJSONObjectType geometryType;
-@property (nonatomic, readonly) id geometry;
-@property (nonatomic, readonly) NSDictionary* properties;
+@property (nonatomic, readonly, strong) id geometry;
+@property (nonatomic, readonly, strong) NSDictionary* properties;
 
 - (id) initWithGeoJSONFeature:(NSDictionary*)feat;
 

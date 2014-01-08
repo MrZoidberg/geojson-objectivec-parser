@@ -20,6 +20,8 @@
 - (id) initWithGeoJSONFeatureCollection:(NSDictionary*)coords;
 - (GeoJSONFeature*) featureAt:(int)index;
 
+- (NSArray *)rawArray;
+
 + (bool) isType:(NSString*)type;
 
 @end

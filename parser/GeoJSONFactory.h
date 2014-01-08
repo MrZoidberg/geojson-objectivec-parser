@@ -28,6 +28,6 @@ NSString* NSStringFromGeoJSONType(GeoJSONObjectType type);
 @property (nonatomic, readonly) GeoJSONObjectType type;
 
 - (bool) createObject:(NSDictionary*)geojson;
-- (bool) createObjectFromJSON:(NSString*)geojson;
+- (bool) createObjectFromJSON:(NSData*)geojsonData;
 
 @end

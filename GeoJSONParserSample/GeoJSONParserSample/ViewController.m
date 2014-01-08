@@ -27,15 +27,13 @@
     GeoJSONFactory *factory = [[GeoJSONFactory alloc] init];
     NSMutableString *str = [[NSMutableString alloc] initWithCapacity:512];
     
-    bool ok = [factory createObjectFromJSON:json.text];
+    bool ok = [factory createObjectFromJSON:[json.text dataUsingEncoding:NSUTF8StringEncoding]];
 
     [str appendFormat:@"Result: %@", ok ? @"ok" : @"error"];
     [str appendFormat:@"\nObject type: %@", NSStringFromGeoJSONType(factory.type)];
     [str appendFormat:@"\nObject description:\n\n%@", factory.object];
     
     result.text = str;
-    
-    [factory release];
 }
 
 - (void)viewDidUnload

@@ -30,13 +30,8 @@
                 }
             }
 
-            [factory release];
-
             _geometries = [[NSArray alloc] initWithArray:tmpObjects];
             _types = [[NSArray alloc] initWithArray:tmpTypes];
-
-            [tmpObjects release];
-            [tmpTypes release];
         } else {
             self = nil;
         }
@@ -66,7 +61,6 @@
     return [@"GeometryCollection" isEqualToString:type];
 }
 
-
 - (NSString*) description
 {
     NSMutableString *str = [[NSMutableString alloc] initWithCapacity:256];
@@ -78,15 +72,6 @@
     }
     [str appendFormat:@"\n]"];
     return [NSString stringWithString:str];
-}
-
-
-
-- (void) dealloc
-{
-    [_geometries release];
-    [_types release];
-    [super dealloc];
 }
 
 @end

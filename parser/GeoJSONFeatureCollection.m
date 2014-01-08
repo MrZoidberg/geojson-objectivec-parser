@@ -9,7 +9,6 @@
 #import "GeoJSONFeatureCollection.h"
 #import "GeoJSONFeature.h"
 
-
 @implementation GeoJSONFeatureCollection
 
 
@@ -25,12 +24,10 @@
                 GeoJSONFeature *feature = [[GeoJSONFeature alloc] initWithGeoJSONFeature:feat];
                 if (feature) {
                     [tmp addObject:feature];
-                    [feature release];
                 }
             }
             
             _features = [[NSArray alloc] initWithArray:tmp];
-            [tmp release];
         } else {
             self = nil;
         }
@@ -67,11 +64,10 @@
     return [NSString stringWithString:str];
 }
 
-
-- (void) dealloc
+- (NSArray *)rawArray
 {
-    [_features release];
-    [super dealloc];
+    return _features;
 }
+
 
 @end

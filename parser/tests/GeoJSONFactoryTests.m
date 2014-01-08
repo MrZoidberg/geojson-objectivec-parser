@@ -335,7 +335,7 @@
     
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertTrue([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertTrue([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_GeometryCollection, _fixture.type, @"Object type is not valid");
     STAssertTrue([_fixture.object isKindOfClass:[GeoJSONGeometryCollection class]], @"Object instance is not valid");
@@ -351,7 +351,7 @@
     
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertTrue([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertTrue([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_FeatureCollection, _fixture.type, @"Object type is not valid");
     STAssertTrue([_fixture.object isKindOfClass:[GeoJSONFeatureCollection class]], @"Object instance is not valid");
@@ -371,7 +371,7 @@
     
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertFalse([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertFalse([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_Undefined, _fixture.type, @"Object type is not valid");
     STAssertNil(_fixture.object, @"Object instance is not valid");
@@ -384,7 +384,7 @@
     
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertFalse([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertFalse([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_Undefined, _fixture.type, @"Object type is not valid");
     STAssertNil(_fixture.object, @"Object instance is not valid");
@@ -396,7 +396,7 @@
     
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertFalse([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertFalse([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_Undefined, _fixture.type, @"Object type is not valid");
     STAssertNil(_fixture.object, @"Object instance is not valid");
@@ -416,7 +416,7 @@
 
     _fixture = [[GeoJSONFactory alloc] init];
     
-    STAssertTrue([_fixture createObjectFromJSON:json], @"Create object is not valid");
+    STAssertTrue([_fixture createObjectFromJSON:[json dataUsingEncoding:NSUTF8StringEncoding]], @"Create object is not valid");
     
     STAssertEquals(GeoJSONType_FeatureCollection, _fixture.type, @"Object type is not valid");
     STAssertNotNil(_fixture.object, @"Object instance is not valid");

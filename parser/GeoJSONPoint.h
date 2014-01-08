@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CoreLocation/CoreLocation.h"
 
 @interface GeoJSONPoint : NSObject
 
@@ -15,6 +16,9 @@
 @property (nonatomic, readonly) double altitude;
 
 - (id) initWithGeoJSONCoordinates:(NSArray*)coord;
+- (id) initWithLocation:(CLLocation *)location;
+- (id) initWithCoordinates:(CLLocationCoordinate2D)coord;
+- (NSDictionary *)proxyForJson;
 
 + (bool) isType:(NSString*)type;
 

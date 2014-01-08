@@ -15,10 +15,6 @@
 #import "GeoJSONFeatureCollection.h"
 #import "GeoJSONGeometryCollection.h"
 
-#import "SBJsonParser.h"
-
-
-
 GeoJSONObjectType GeoJSONTypeFromString(NSString* str)
 {
     if ([GeoJSONPoint isType:str]) {
@@ -73,28 +69,31 @@ NSString* NSStringFromGeoJSONType(GeoJSONObjectType type)
 
 
 
-- (NSDictionary*) parseJSON:(NSString*)json
+- (NSDictionary*) parseJSON:(NSData*)json
 {
     if (json.length == 0) {
         return nil;
     }
     
 #ifdef DEBUG
-    NSLog(@"Parsing %@...", json);
+    //NSLog(@"Parsing %@...", json);
 #endif
     
-	SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSError *error = nil;
-	NSDictionary *dict = [parser objectWithString:json error:&error];
-	[parser release];
+    NSError *e = nil;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:json options:kNilOptions error: &e];
     
-    return (error != nil) ? nil : dict;
+    if (e != nil) {
+        NSLog(@"Error parsing JSON: %@", e);
+        return nil;
+    }
+    
+    return dict;
 }
 
 
-- (bool) createObjectFromJSON:(NSString*)geojson
+- (bool) createObjectFromJSON:(NSData*)geojsonData
 {
-    NSDictionary *dict = [self parseJSON:geojson];
+    NSDictionary *dict = [self parseJSON:geojsonData];
     return [self createObject:dict];
 }
 
@@ -108,7 +107,7 @@ NSString* NSStringFromGeoJSONType(GeoJSONObjectType type)
     NSString *objType = [geojson objectForKey:@"type"];
 
     _type = GeoJSONTypeFromString(objType);
-    [_object release]; _object = nil;
+    _object = nil;
 
     NSArray* coord = [geojson objectForKey:@"coordinates"];
     switch (_type) {
@@ -140,15 +139,6 @@ NSString* NSStringFromGeoJSONType(GeoJSONObjectType type)
     }
     
     return (_object != nil);
-}
-
-
-
-                
-- (void) dealloc
-{
-    [_object release];
-    [super dealloc];
 }
 
 @end

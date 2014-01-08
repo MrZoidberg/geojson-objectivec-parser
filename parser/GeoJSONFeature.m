@@ -30,16 +30,14 @@
             self = nil;
         } else {
             if ([geomId isKindOfClass:NSDictionary.class]) {
-                GeoJSONFactory *parser = [[GeoJSONFactory alloc] init];
+                GeoJSONFactory *parser = [GeoJSONFactory new];
                 
                 if ([parser createObject:(NSDictionary*)geomId]) {
                     _geometryType = parser.type;
-                    _geometry = [parser.object retain];
+                    _geometry = parser.object;
                 } else {
                     self = nil;
                 }
-                
-                [parser release];
             } else {
                 // geometry is invalid: <null>
                 _geometryType = GeoJSONType_Undefined;
@@ -63,16 +61,6 @@
     [str appendFormat:@"\n\tType=%@", NSStringFromGeoJSONType(_geometryType)];
     [str appendFormat:@"\n\tGeom=[%@]\n]", [_geometry description]];
     return [NSString stringWithString:str];
-}
-
-
-
-- (void) dealloc
-{
-    [_featureId release];
-    [_properties release];
-    [_geometry release];
-    [super dealloc];
 }
 
 @end
