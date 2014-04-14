@@ -17,7 +17,7 @@ Copy classes from parser folder to your project (excluding tests).
 
 Or with **Cocoapods**
 
-	pod 'geojson-objectivec-parser', :git => "https://github.com/MrZoidberg/geojson-objectivec-parser/geojson-objectivec-parser.git"
+	pod 'geojson-objectivec-parser', :git => "https://github.com/MrZoidberg/geojson-objectivec-parser.git"
 
 ## Usage
 
